@@ -96,9 +96,33 @@ public class Servizi {
 		return result;
 	}
 	
+	//metodo per trovare un utente usando il suo id
+	public UtenteBean getUtenteById(long id) {
+		UtenteBean u =udao.trovaUtenteConId(id);
+		return u;
+	}
+	
 	
 	//metodo per cancellare un utente
 	public boolean eliminaUtente(UtenteBean u) {
+		if(u.getRuolo()=='a')
+		{
+			return false;
+		}
+		else {
+			Rubrica r=rdao.trovaRubricaConNome(u.getUsername());
+			if(r!=null) {
+			rdao.deleteUtente(r);
+			}
+			return udao.deleteUtente(u);
+		}
+	}
+	
+	//metodo per cancellare un utente con id
+	public boolean eliminaUtenteById(long id) {
+		
+		UtenteBean u = getUtenteById(id);
+		
 		if(u.getRuolo()=='a')
 		{
 			return false;

@@ -61,6 +61,31 @@ public class UtenteDao {
 		
 	}
 	
+	public UtenteBean trovaUtenteConId(long id) {
+		
+		UtenteBean ubean=null;
+		Session session =HibernateUtil.openSession();
+		Transaction tx=null;
+
+		try{
+		tx=session.getTransaction();
+		tx.begin();
+		
+		Query query=session.createQuery("from UtenteBean where id_Utente=:x1");
+		query.setLong("x1", id);
+		
+		ubean=(UtenteBean) query.uniqueResult();
+
+		 tx.commit();
+		}catch(Exception ex){
+			tx.rollback();
+		}finally{
+			session.close();
+		}
+		return ubean;
+		
+	}
+	
 	public List<UtenteBean> getTuttiUtenti() {
 		List<UtenteBean> utenti= new ArrayList<UtenteBean>();
 		Session session =HibernateUtil.openSession();

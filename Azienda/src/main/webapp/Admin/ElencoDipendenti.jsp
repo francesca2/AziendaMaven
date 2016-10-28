@@ -37,7 +37,7 @@ if(admin.isValid()){
     <div class="box col-md-12">
     <div class="box-inner">
     <div class="box-header well" data-original-title="">
-        <h2><i class="glyphicon glyphicon-th-list"></i> Elenco Clienti</h2>
+        <h2><i class="glyphicon glyphicon-th-list"></i> Elenco Dipendenti</h2>
 
         <div class="box-icon">
             <a href="#" class="btn btn-setting btn-round btn-default"><i class="glyphicon glyphicon-cog"></i></a>
@@ -80,10 +80,12 @@ if(admin.isValid()){
                 							<i class="glyphicon glyphicon-edit icon-white"></i>
                 							Edit
             								</a>
-            								<a class="btn btn-danger" href="doCancellaUtente.jsp">
-                							<i class="glyphicon glyphicon-trash icon-white"></i>
-                							Delete
-            								</a>
+            								<form action="doCancellaUtente.jsp" method="get">
+            								<input type="hidden" value="${u.id_Utente}" name="id_Utente"/>
+            								<button type="submit" class="btn btn-danger">Delete
+            								<i class="glyphicon glyphicon-trash icon-white"></i>
+            								</button>
+            								</form>
         				</td>
 					</tr>
 				</c:forEach>

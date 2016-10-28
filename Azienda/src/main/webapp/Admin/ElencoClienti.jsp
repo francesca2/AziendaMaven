@@ -79,11 +79,10 @@ if(admin.isValid()){
                 							Edit
             								</a>
             								<form action="doCancellaUtente.jsp" method="get">
-            								<input type="hidden" value="${u.username}" name="username"/>
-<!--             								<a class="btn btn-danger" id="delete"> -->
-                							
-                							
-            								<input type="submit" class="btn btn-danger" value="Delete"><i class="glyphicon glyphicon-trash icon-white"></i></input>
+            								<input type="hidden" value="${u.id_Utente}" name="id_Utente"/>
+            								<button type="submit" class="btn btn-danger">Delete
+            								<i class="glyphicon glyphicon-trash icon-white"></i>
+            								</button>
             								</form>
         				</td>
 					</tr>

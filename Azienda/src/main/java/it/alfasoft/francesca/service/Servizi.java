@@ -2,6 +2,7 @@ package it.alfasoft.francesca.service;
 
 import java.util.List;
 
+import model.BustaPaga;
 import model.Rubrica;
 import model.Voce;
 import it.alfasoft.francesca.bean.AdminBean;
@@ -9,6 +10,7 @@ import it.alfasoft.francesca.bean.ClienteBean;
 import it.alfasoft.francesca.bean.DipendenteBean;
 import it.alfasoft.francesca.bean.UtenteBean;
 import it.alfasoft.francesca.dao.AdminDao;
+import it.alfasoft.francesca.dao.BustaPagaDao;
 import it.alfasoft.francesca.dao.ClienteDao;
 import it.alfasoft.francesca.dao.DipendenteDao;
 import it.alfasoft.francesca.dao.RubricaDao;
@@ -24,6 +26,7 @@ public class Servizi {
 	DipendenteDao ddao=new DipendenteDao();
 	RubricaDao rdao= new RubricaDao();
 	VoceDao vdao= new VoceDao();
+	BustaPagaDao bdao=new BustaPagaDao();
 
 	//metodi per registrare gli utenti
 	public boolean registraUtente(UtenteBean u) {
@@ -185,4 +188,17 @@ public class Servizi {
 		return result;
 	}
 
+	//metodo per creare una busta paga
+	public boolean salvaBustaPaga(BustaPaga b) {
+		return bdao.aggiungiBustaPaga(b);
+
+	}
+	
+	//metodo per prendere tutte le buste paga di un dipendente
+	public List<BustaPaga> getBustePaga(DipendenteBean d) {
+		List<BustaPaga> lista = bdao.getBustePaga(d);
+
+		return lista;
+	}
+	
 }

@@ -29,7 +29,7 @@ if(admin.isValid()){
         </li>
     </ul>
 </div>
-
+            <%=message.getMessage()%>
     <!-- content ends -->
     </div><!--/#content.col-md-0-->
 </div><!--/fluid-row-->

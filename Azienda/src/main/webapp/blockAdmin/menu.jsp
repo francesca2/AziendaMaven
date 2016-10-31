@@ -19,7 +19,7 @@
                         </li>
                         <li><a class="ajax-link" href="../Admin/ElencoDipendenti.jsp"><i class="glyphicon glyphicon-th-list"></i><span> Elenco Dipendenti</span></a>
                         </li>
-                        <li><a class="ajax-link" href="gallery.html"><i class="glyphicon glyphicon-euro"></i><span> Busta paga</span></a>
+                        <li><a class="ajax-link" href="../Admin/BustaPaga.jsp"><i class="glyphicon glyphicon-euro"></i><span> Busta paga</span></a>
                         </li>
                         <li><a href="../doLogout.jsp"><i class="glyphicon glyphicon-lock"></i><span> Login Page</span></a>
                         </li>

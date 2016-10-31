@@ -1,6 +1,14 @@
 package it.alfasoft.francesca.bean;
 
+import java.util.HashSet;
+import java.util.Set;
+
 import javax.persistence.*;
+
+import model.BustaPaga;
+
+import org.hibernate.annotations.NotFound;
+import org.hibernate.annotations.NotFoundAction;
 
 import Utility.IsValid;
 
@@ -14,6 +22,10 @@ public class DipendenteBean extends UtenteBean implements IsValid {
 	
 	private String posizione;
 	private double stipendio;
+	
+	@OneToMany(mappedBy="dipendente",fetch=FetchType.EAGER,cascade=CascadeType.ALL)
+	@NotFound(action=NotFoundAction.IGNORE)
+	private Set<BustaPaga> listaBustePaga = new HashSet<BustaPaga>();
 	
 	public DipendenteBean() {
 
@@ -45,6 +57,16 @@ public class DipendenteBean extends UtenteBean implements IsValid {
 
 	public void setStipendio(double stipendio) {
 		this.stipendio = stipendio;
+	}
+
+
+	public Set<BustaPaga> getListaBustePaga() {
+		return listaBustePaga;
+	}
+
+
+	public void setListaBustePaga(Set<BustaPaga> listaBustePaga) {
+		this.listaBustePaga = listaBustePaga;
 	}
 
 

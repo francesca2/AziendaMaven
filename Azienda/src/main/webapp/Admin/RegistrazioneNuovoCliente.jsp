@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+            <jsp:include page="../blockAdmin/header.jsp"></jsp:include>
+    <jsp:include page="../blockAdmin/navBar.jsp"></jsp:include>
                 <%@ taglib prefix="c" 
 uri="http://java.sun.com/jsp/jstl/core" %>
 <jsp:useBean id="admin" class="it.alfasoft.francesca.bean.AdminBean"

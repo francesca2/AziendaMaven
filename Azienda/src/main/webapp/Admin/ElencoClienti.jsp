@@ -10,6 +10,12 @@
         <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <jsp:useBean id="admin" class="it.alfasoft.francesca.bean.AdminBean"
 	scope="session"></jsp:useBean>
+	
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+<script type="text/javascript" src="Modifiche.js"></script>	
+	
 <%@ page isELIgnored="false" %>
 	
 <% 
@@ -39,12 +45,6 @@ if(admin.isValid()){
     <div class="box-header well" data-original-title="">
         <h2><i class="glyphicon glyphicon-th-list"></i> Elenco Clienti</h2>
 
-        <div class="box-icon">
-            <a href="#" class="btn btn-setting btn-round btn-default"><i class="glyphicon glyphicon-cog"></i></a>
-            <a href="#" class="btn btn-minimize btn-round btn-default"><i
-                    class="glyphicon glyphicon-chevron-up"></i></a>
-            <a href="#" class="btn btn-close btn-round btn-default"><i class="glyphicon glyphicon-remove"></i></a>
-        </div>
     </div>
     <div class="box-content">
     <table class="table table-striped table-bordered bootstrap-datatable datatable responsive">
@@ -62,9 +62,8 @@ if(admin.isValid()){
 				<%
 					Servizi s = new Servizi();
 					List<ClienteBean> lista = s.getClienti();
-					session.setAttribute("lista", lista);
+					request.setAttribute("lista", lista);
 				%>
-				<c:set var="i" value="1" scope="page" />
 
 				<c:forEach items="${lista}" var="u">
 

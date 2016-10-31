@@ -39,12 +39,6 @@ if(admin.isValid()){
     <div class="box-header well" data-original-title="">
         <h2><i class="glyphicon glyphicon-th-list"></i> Elenco Dipendenti</h2>
 
-        <div class="box-icon">
-            <a href="#" class="btn btn-setting btn-round btn-default"><i class="glyphicon glyphicon-cog"></i></a>
-            <a href="#" class="btn btn-minimize btn-round btn-default"><i
-                    class="glyphicon glyphicon-chevron-up"></i></a>
-            <a href="#" class="btn btn-close btn-round btn-default"><i class="glyphicon glyphicon-remove"></i></a>
-        </div>
     </div>
     <div class="box-content">
     <table class="table table-striped table-bordered bootstrap-datatable datatable responsive">
@@ -54,7 +48,7 @@ if(admin.isValid()){
 		<th>Nome</th>
 		<th>Cognome</th>
 		<th>Username</th>
-		<th>Posizionee</th>
+		<th>Posizione</th>
 		<th>Stipendio</th>
 	</tr>
 
@@ -62,9 +56,8 @@ if(admin.isValid()){
 
 				<%
 					Servizi s = new Servizi();
-					String usnm = admin.getUsername();
 					List<DipendenteBean> lista = s.getDipendenti();
-					session.setAttribute("lista", lista);
+					request.setAttribute("lista", lista);
 				%>
 
 				<c:forEach items="${lista}" var="u">

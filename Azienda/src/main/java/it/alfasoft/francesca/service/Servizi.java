@@ -178,9 +178,9 @@ public class Servizi {
 
 
 	//metodo per eliminare una voce
-	public boolean eliminaVoce(Rubrica r, String nome, String cognome)
+	public boolean eliminaVoce(Rubrica r, long id)
 	{
-		Voce v=vdao.trovaVoce(nome, cognome, r.getId_Rubrica());
+		Voce v=vdao.trovaVoceConId(id);
 		boolean result=vdao.eliminaVoce(v);
 		return result;
 	}

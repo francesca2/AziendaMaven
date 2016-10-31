@@ -75,6 +75,31 @@ public class VoceDao {
 		return v;
 	}
 	
+	public Voce trovaVoceConId(long id)
+	{
+		Voce v=null;
+		Session session =HibernateUtil.openSession();
+		Transaction tx=null;
+
+		try{
+		tx=session.getTransaction();
+		tx.begin();
+
+		Query query=session.createQuery("from Voce where Id_Voce=:x1");
+		query.setLong("x1", id);
+
+		v=(Voce) query.uniqueResult();
+		 
+		 tx.commit();
+		}catch(Exception ex){
+			tx.rollback();
+		}finally{
+			session.close();
+		}
+		
+		return v;
+	}
+	
 	public List<Voce> getVociRubrica(Rubrica r)
 	{
 		List<Voce> voci= new ArrayList<Voce>();

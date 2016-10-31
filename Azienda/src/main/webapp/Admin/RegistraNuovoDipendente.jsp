@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
-                <%@ taglib prefix="c" 
+        <jsp:include page="../blockAdmin/header.jsp"></jsp:include>
+    <jsp:include page="../blockAdmin/navBar.jsp"></jsp:include>
+     <%@ taglib prefix="c" 
 uri="http://java.sun.com/jsp/jstl/core" %>
 <jsp:useBean id="admin" class="it.alfasoft.francesca.bean.AdminBean"
 	scope="session"></jsp:useBean>
@@ -47,56 +49,35 @@ if(admin.isValid()){
                 <form role="form" action="doRegistraDipendente.jsp" method="post">
                     <div class="form-group">
                         <label>Nome</label>
-                        <input type="text" name="nome" class="form-control" id="exampleInputEmail1" >
+                        <input type="text" name="nome" class="form-control" placeholder="Nome">
                     </div>
                     <div class="form-group">
                         <label>Cognome</label>
-                        <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+                        <input type="text" name="cognome" class="form-control" placeholder="Cognome">
                     </div>
                     <div class="form-group">
                         <label>Username</label>
-                        <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Enter email">
+                        <input type="text" name="username" class="form-control" placeholder="Username">
                     </div>
                                         <div class="form-group">
                         <label>Password</label>
-                        <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Enter email">
+                        <input type="password" name="password" class="form-control" placeholder="Password">
                     </div>
                                         <div class="form-group">
                         <label>Posizione</label>
-                        <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Enter email">
+                        <input type="text" name="posizione" class="form-control" placeholder="Posizione">
                     </div>
                                         <div class="form-group">
                         <label>Stipendio</label>
-                        <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Enter email">
+                        <input type="number" name="stipendio" class="form-control" placeholder="Stipendio">
                     </div>
-                    <button type="submit" class="btn btn-default">Submit</button>
+                    <button type="submit" class="btn btn-default">Registra</button>
                 </form>
 
             </div>
         </div>
     </div>
-    <!--/span-->
-
-
-<form action="doRegistraDipendente.jsp" method="post">
-Nome :<br>
- <input type="text" name="nome" /> <br>
-Cognome :<br>
- <input type="text" name="cognome"/> <br>
-Username :<br>
- <input type="text" name="username"/> <br>
-Password :<br>
- <input type="password" name="password"/> <br>
-Posizione :<br>
- <input type="text" name="posizione"/> <br>
-Stipendio :<br>
- <input type="number" name="stipendio"/> <br>
-
-<input type="submit" value ="Registra"/>
-
-</form>
-
-   
+    <!--/span-->   
     <!-- content ends -->
     </div><!--/#content.col-md-0-->
 </div><!--/fluid-row-->
@@ -126,7 +107,7 @@ Stipendio :<br>
 <jsp:include page="../blockAdmin/footer.jsp"></jsp:include>
 
 </div><!--/.fluid-container-->
-
+</div>
 <!-- Includo tutti gli script al temine della pagina -->
 
 <jsp:include page="../blockAdmin/includeScriptJs.jsp"></jsp:include>

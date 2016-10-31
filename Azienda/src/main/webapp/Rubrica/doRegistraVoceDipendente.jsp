@@ -27,14 +27,14 @@
     	 case 'c' :
     		 message.setMessage("Voce aggiunta alla tua rubrica!");
  	    	%>
- 		<jsp:forward page="HomePageCliente.jsp" />
+ 		<jsp:forward page="../HomePage/HomePageDipendente.jsp" />
  		<%
  		break;
  		
  		case 'd' :
 	    	%>
 	    	 message.setMessage("Voce aggiunta alla tua rubrica!");
-		<jsp:forward page="HomePageDipendente.jsp" />
+		<jsp:forward page="../HomePage/HomePageDipendente.jsp" />
 		<%
 		break;
     	 

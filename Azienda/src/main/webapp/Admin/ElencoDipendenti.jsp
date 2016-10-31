@@ -66,16 +66,15 @@ if(admin.isValid()){
 					List<DipendenteBean> lista = s.getDipendenti();
 					session.setAttribute("lista", lista);
 				%>
-				<c:set var="i" value="1" scope="page" />
 
 				<c:forEach items="${lista}" var="u">
 
 					<tr>
-						<td><c:out value="${u.nome}" /></td>
-						<td><c:out value="${u.cognome}" /></td>
-						<td><c:out value="${u.username}" /></td>
-						<td><c:out value="${u.posizione}" /></td>
-						<td><c:out value="${u.stipendio}" /></td>
+						<td class="center"><c:out value="${u.nome}" /></td>
+						<td class="center"><c:out value="${u.cognome}" /></td>
+						<td class="center"><c:out value="${u.username}" /></td>
+						<td class="center"><c:out value="${u.posizione}" /></td>
+						<td class="center"><c:out value="${u.stipendio}" /></td>
 						<td class="center"> <a class="btn btn-info" href="#">
                 							<i class="glyphicon glyphicon-edit icon-white"></i>
                 							Edit

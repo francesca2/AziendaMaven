@@ -26,7 +26,7 @@ if(admin.isValid()){
             <div>
     <ul class="breadcrumb">
         <li>
-            <a href="../HomePage/HomePageAdmin.jsp">Home</a>
+            <a href="../HomePage/HomeCliente.jsp.jsp">Home</a>
         </li>
         <li>
             <a href="#">ElencoClienti</a>
@@ -69,12 +69,12 @@ if(admin.isValid()){
 				<c:forEach items="${lista}" var="u">
 
 					<tr>
-						<td class="center"><c:out value="${u.nome}" /></td>
-						<td class="center"><c:out value="${u.cognome}" /></td>
-						<td class="center"><c:out value="${u.username}" /></td>
-						<td class="center"><c:out value="${u.ragioneSociale}" /></td>
-						<td class="center"><c:out value="${u.pIVA}" /></td>
-						<td class="center"> <a class="btn btn-info" href="#">
+						<td class="center" ><c:out value="${u.nome}" /></td>
+						<td class="center" ><c:out value="${u.cognome}" /></td>
+						<td class="center" ><c:out value="${u.username}" /></td>
+						<td class="center" ><c:out value="${u.ragioneSociale}" /></td>
+						<td class="center" ><c:out value="${u.pIVA}" /></td>
+						<td class="center" > <a id="edit" class="btn btn-info">
                 							<i class="glyphicon glyphicon-edit icon-white"></i>
                 							Edit
             								</a>

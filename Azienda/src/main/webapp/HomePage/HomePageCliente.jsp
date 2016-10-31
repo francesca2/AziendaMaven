@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+    	    <jsp:include page="../blockCliente/header.jsp"></jsp:include>
+    <jsp:include page="../blockCliente/navBar.jsp"></jsp:include>
         <%@ taglib prefix="c" 
 uri="http://java.sun.com/jsp/jstl/core" %>
     
@@ -9,51 +11,61 @@ uri="http://java.sun.com/jsp/jstl/core" %>
  		 <% 
 if(cliente.isValid()){
 %>   
-	
-<jsp:useBean id="message" class="Utility.MessageBean" scope="request"></jsp:useBean>    
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html>
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-  <link rel="Stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/stat.css">
 
-<title>Insert title here</title>
-</head>
-<body>
+ <div class="ch-container">
+    <div class="row"> 
+       <jsp:include page="../blockCliente/menu.jsp"></jsp:include>
+       
+       
+          <div id="content" class="col-lg-10 col-sm-10">
+            <!-- content starts -->
+            <div>
+    <ul class="breadcrumb">
+        <li>
+            <a href="../HomePage/HomeCliente.jsp">Home</a>
+        </li>
+        <li>
+            <a href="#">Cliente</a>
+        </li>
+    </ul>
+</div>
 
-  <div class="header">
-<h2>Home page Cliente</h2>
-<p>
-  <c:out value="${cliente.nome}"/>
-  <c:out value="${cliente.cognome}"/>
-</p>
-  
-  </div>
-  
-<div class="row">
-  
-<div class="col-2 menu">
-  <jsp:include page=".././MenuLaterale/MenuLateraleCliente.jsp"></jsp:include>
-  
-  </div>
-    <div class="col-10 content">
-   <h1>Benvenuto
-   <%=cliente.getNome() %> !
-   </h1>
-      <%=message.getMessage()%>
-  </div>
-    <div id="footer">
- <h1>Footer</h1>
- 
-  </div>
-  
-  
-  </div> <!--  end of container -->
-</body>
-</html>
+    <!-- content ends -->
+    </div><!--/#content.col-md-0-->
+</div><!--/fluid-row-->
+    
+        <hr>
+
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+         aria-hidden="true">
+
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">×</button>
+                    <h3>Settings</h3>
+                </div>
+                <div class="modal-body">
+                    <p>Here settings can be configured...</p>
+                </div>
+                <div class="modal-footer">
+                    <a href="#" class="btn btn-default" data-dismiss="modal">Close</a>
+                    <a href="#" class="btn btn-primary" data-dismiss="modal">Save changes</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+<jsp:include page="../blockCliente/footer.jsp"></jsp:include>
+
+</div><!--/.fluid-container-->
+
+<!-- Includo tutti gli script al temine della pagina -->
+
+<jsp:include page="../blockCliente/includeScriptJs.jsp"></jsp:include>
 
 <%
 }else {
-	response.sendRedirect("../login.jsp");
+	response.sendRedirect("../Accesso/login.jsp");
 }
 %>

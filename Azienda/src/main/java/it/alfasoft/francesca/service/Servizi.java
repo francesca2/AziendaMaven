@@ -195,10 +195,21 @@ public class Servizi {
 	}
 	
 	//metodo per prendere tutte le buste paga di un dipendente
-	public List<BustaPaga> getBustePaga(DipendenteBean d) {
-		List<BustaPaga> lista = bdao.getBustePaga(d);
+	public List<BustaPaga> getBustePagaDipendente(DipendenteBean d) {
+		List<BustaPaga> lista = bdao.getBustePagaDipendente(d);
 
 		return lista;
 	}
-	
+	//metodo per vedere tutte le buste paga
+	public List<BustaPaga> getBustePaga() {
+		List<BustaPaga> lista = bdao.getBustePaga();
+
+		return lista;
+	}
+	//metodo per eliminare una busta paga
+	public boolean eliminaBustaPaga(long id)
+	{
+		BustaPaga b=bdao.getBustaPagaById(id);
+		return bdao.eliminaBustaPaga(b);
+	}
 }

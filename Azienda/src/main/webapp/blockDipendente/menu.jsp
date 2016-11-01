@@ -15,6 +15,8 @@
                         </li>
                         <li><a class="ajax-link" href="../Rubrica/ElencoContattiDipendente.jsp"><i class="glyphicon glyphicon-list"></i><span> Elenco Contatti</span></a>
                         </li>
+                        <li><a class="ajax-link" href="../Dipendente/ElencoBustePagaDipendente.jsp"><i class="glyphicon glyphicon-euro"></i><span> Buste Paga</span></a>
+                        </li>
                         <li><a href="../doLogout.jsp"><i class="glyphicon glyphicon-lock"></i><span> Login Page</span></a>
                         </li>
                     </ul>

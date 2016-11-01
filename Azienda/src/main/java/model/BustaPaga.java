@@ -19,7 +19,7 @@ public class BustaPaga implements IsValid {
 	@ManyToOne
 	private DipendenteBean dipendente;
 	
-	private String date;
+	private String data;
 	private long importo;
 	
 	public BustaPaga() {
@@ -40,15 +40,15 @@ public class BustaPaga implements IsValid {
 	public void setDipendente(DipendenteBean dipendente) {
 		this.dipendente = dipendente;
 	}
-
-	public String getDate() {
-		return date;
-	}
-
-	public void setDate(String date) {
-		this.date = date;
-	}
 	
+	public String getData() {
+		return data;
+	}
+
+	public void setData(String data) {
+		this.data = data;
+	}
+
 	public long getImporto() {
 		return importo;
 	}

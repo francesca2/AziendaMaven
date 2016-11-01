@@ -10,3 +10,11 @@ jQuery(document).ready(function() {
 			})
 	
 });
+
+function conferma(){
+	var result=confirm("Sei sicuro di voler eliminare definitivamente questo utente?")
+	if(result==true){
+		document.getElementById("delete").action='doCancellaUtente.jsp';
+		document.getElementById("delete").submit();
+	}
+}

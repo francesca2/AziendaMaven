@@ -7,7 +7,6 @@ import java.util.List;
 
 import hibernateUtil.HibernateUtil;
 import model.BustaPaga;
-import model.Rubrica;
 import model.Voce;
 
 import org.hibernate.Query;
@@ -41,7 +40,7 @@ public class BustaPagaDao {
 
 	}
 	
-	public List<BustaPaga> getBustePaga(DipendenteBean d)
+	public List<BustaPaga> getBustePagaDipendente(DipendenteBean d)
 	{
 		List<BustaPaga> lista= new ArrayList<BustaPaga>();
 		long id=d.getId_Utente();
@@ -52,7 +51,7 @@ public class BustaPagaDao {
 		tx=session.getTransaction();
 		tx.begin();
 
-		Query query= session.createQuery("from BustaPaga where Dipendente_Id_Dipendente=:x");
+		Query query= session.createQuery("from BustaPaga where Dipendente_Id_Utente=:x");
 		query.setLong("x", id);
 		lista=query.list();
 		
@@ -63,6 +62,53 @@ public class BustaPagaDao {
 			session.close();
 		}
 		return lista;
+	}
+	
+	public List<BustaPaga> getBustePaga()
+	{
+		List<BustaPaga> lista= new ArrayList<BustaPaga>();
+		Session session =HibernateUtil.openSession();
+		Transaction tx=null;
+
+		try{
+		tx=session.getTransaction();
+		tx.begin();
+
+		Query query= session.createQuery("from BustaPaga");
+		lista=query.list();
+		
+		 tx.commit();
+		}catch(Exception ex){
+			tx.rollback();
+		}finally{
+			session.close();
+		}
+		return lista;
+	}
+	
+	public BustaPaga getBustaPagaById(long id)
+	{
+		BustaPaga b=null;
+		Session session =HibernateUtil.openSession();
+		Transaction tx=null;
+
+		try{
+		tx=session.getTransaction();
+		tx.begin();
+
+		Query query=session.createQuery("from BustaPaga where Id_BustaPaga:=x1");
+		query.setLong("x1", id);
+		
+		b=(BustaPaga) query.uniqueResult();
+		 
+		 tx.commit();
+		}catch(Exception ex){
+			tx.rollback();
+		}finally{
+			session.close();
+		}
+		
+		return b;
 	}
 	
 	public boolean eliminaBustaPaga(BustaPaga b)

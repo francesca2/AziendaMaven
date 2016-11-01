@@ -40,11 +40,16 @@ if(admin.isValid()){
 							</h2>
 							<%=message.getMessage()%>
 						</div>
-						                <div class="control-group">
+						               
+                <br>
+						<div class="box-content">
+							<form role="form" id="bustaPaga" action="doBustaPaga.jsp" method="post">
+								<div class="form-group">
+								 <div class="control-group">
                     <label class="control-label" for="selectError2">Dipendenti</label>
 
                     <div class="controls">
-                        <select data-placeholder="Dipendente" id="selection" data-rel="chosen" style="width: 150px;">
+                        <select data-placeholder="Dipendente" id="selection" data-rel="chosen" style="width: 150px;" form="bustaPaga">
                             <option value=""></option>
 				<%
 					Servizi s = new Servizi();
@@ -53,27 +58,24 @@ if(admin.isValid()){
 				%>
 
 				<c:forEach items="${lista}" var="u">
-								<option><c:out value="${u.nome} ${u.cognome} ${u.username}" /></option>
+								<option><c:out value="${u.nome} ${u.cognome}"/></option>
+								<input type="hidden" value="${u.id_Utente}" name="id_Utente"/>
 								</c:forEach>				
 				
-                        </select>
-                    </div>
-                </div>
-                <br>
-						<div class="box-content">
-							<form role="form" id="bustaPaga" action="doBustaPaga.jsp" method="post">
-								<div class="form-group">
+                        </select>	
+                        <br>						
 									<label>Data di emissione</label> <input type="text" id="data" name="data"
 										class="form-control" placeholder="Data di emissione">
 								</div>
 								<div class="form-group">
-									<label>Importo</label> <input type="number" name="importo"
+									<label>Importo</label> <input type="text" name="importo"
 										class="form-control" placeholder="Importo">
 								</div>
-								<input type="hidden" value="${u.id_Utente}" name="id_Utente"/>
+
 								<button type="submit" class="btn btn-default">Salva</button>
 							</form>
-
+                    </div>
+                </div>
 						</div>
 					</div>
 				</div>

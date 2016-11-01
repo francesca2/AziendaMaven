@@ -1,28 +1,25 @@
-<%@page import="it.alfasoft.francesca.bean.ClienteBean"%>
+<%@page import="it.alfasoft.francesca.bean.DipendenteBean"%>
+<%@page import="model.BustaPaga"%>
 <%@page import="java.util.List"%>
-<%@page import="it.alfasoft.francesca.service.Servizi"%>  
+<%@page import="it.alfasoft.francesca.service.Servizi"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
-    
-        <jsp:include page="../blockAdmin/header.jsp"></jsp:include>
-    <jsp:include page="../blockAdmin/navBar.jsp"></jsp:include>
+        <jsp:include page="../blockDipendente/header.jsp"></jsp:include>
+    <jsp:include page="../blockDipendente/navBar.jsp"></jsp:include>
  
         <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<jsp:useBean id="admin" class="it.alfasoft.francesca.bean.AdminBean"
+<jsp:useBean id="dipendente" class="it.alfasoft.francesca.bean.DipendenteBean"
 	scope="session"></jsp:useBean>
 	
-<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-<script type="text/javascript" src="Modifiche.js"></script>	
-	
-<%@ page isELIgnored="false" %>
+	<%@ page isELIgnored="false" %>
 	
 <% 
-if(admin.isValid()){
+if(dipendente.isValid()){
 %>
 
  <div class="ch-container">
     <div class="row"> 
-       <jsp:include page="../blockAdmin/menu.jsp"></jsp:include>
+       <jsp:include page="../blockDipendente/menu.jsp"></jsp:include>
        
        
           <div id="content" class="col-lg-10 col-sm-10">
@@ -30,10 +27,10 @@ if(admin.isValid()){
             <div>
     <ul class="breadcrumb">
         <li>
-            <a href="../HomePage/HomeAdmin.jsp">Home</a>
+            <a href="../HomePage/HomeDipendente.jsp.jsp">Home</a>
         </li>
         <li>
-            <a href="#">ElencoClienti</a>
+            <a href="#">Elenco Buste Paga</a>
         </li>
     </ul>
 </div>
@@ -41,7 +38,7 @@ if(admin.isValid()){
     <div class="box col-md-12">
     <div class="box-inner">
     <div class="box-header well" data-original-title="">
-        <h2><i class="glyphicon glyphicon-th-list"></i> Elenco Clienti</h2>
+        <h2><i class="glyphicon glyphicon-th-list"></i> Buste Paga Emesse</h2>
 
     </div>
     <div class="box-content">
@@ -50,37 +47,24 @@ if(admin.isValid()){
     <tr>
 		<th>Nome</th>
 		<th>Cognome</th>
-		<th>Username</th>
-		<th>Ragione sociale</th>
-		<th>Partita iva</th>
-        <th>Actions</th>
+		<th>Data</th>
+		<th>Importo</th>
     </tr>
     </thead>
     <tbody>
 				<%
 					Servizi s = new Servizi();
-					List<ClienteBean> lista = s.getClienti();
+					List<BustaPaga> lista = s.getBustePagaDipendente(dipendente);
 					request.setAttribute("lista", lista);
 				%>
 
-				<c:forEach items="${lista}" var="u">
+				<c:forEach items="${lista}" var="b">
 
 					<tr>
-						<td class="center" ><c:out value="${u.nome}" /></td>
-						<td class="center" ><c:out value="${u.cognome}" /></td>
-						<td class="center" ><c:out value="${u.username}" /></td>
-						<td class="center" ><c:out value="${u.ragioneSociale}" /></td>
-						<td class="center" ><c:out value="${u.pIVA}" /></td>
-						<td class="center" > <a id="edit" class="btn btn-info">
-                							<i class="glyphicon glyphicon-edit icon-white"></i>
-                							Edit
-            								</a>
-            								<form id="delete" method="get">
-            								<input type="hidden" value="${u.id_Utente}" name="id_Utente"/>
-            								<button type="submit" class="btn btn-danger" onclick="conferma()">Delete
-            								<i class="glyphicon glyphicon-trash icon-white"></i>
-            								</button>
-            								</form>
+						<td class="center" ><c:out value="${b.dipendente.nome}" /></td>
+						<td class="center" ><c:out value="${b.dipendente.nome}" /></td>
+						<td class="center" ><c:out value="${b.data}" /></td>
+						<td class="center" ><c:out value="${b.importo}" /></td>
         				</td>
 					</tr>
 				</c:forEach>
@@ -117,13 +101,13 @@ if(admin.isValid()){
         </div>
     </div>
     
-<jsp:include page="../blockAdmin/footer.jsp"></jsp:include>
+<jsp:include page="../blockDipendente/footer.jsp"></jsp:include>
 
 </div><!--/.fluid-container-->
 
 <!-- Includo tutti gli script al temine della pagina -->
 
-<jsp:include page="../blockAdmin/includeScriptJs.jsp"></jsp:include>
+<jsp:include page="../blockDipendente/includeScriptJs.jsp"></jsp:include>
 
 <%
 }else {

@@ -19,10 +19,9 @@
     	dipendente.setPassword(password);
         s.registraDipendente(dipendente);
         s.registraRubrica(dipendente.getUsername());
-        message.setMessage("Dipendente registrato!");
         
         %>
-    	<jsp:forward page="../HomePage/HomePageAdmin.jsp"/>
+    	<jsp:forward page="ElencoDipendenti.jsp"/>
     <%
     }
     else{

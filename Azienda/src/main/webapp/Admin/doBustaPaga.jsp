@@ -9,27 +9,22 @@
     <%
 Servizi s= new Servizi();
 
+
 long id=Long.parseLong(request.getParameter("id_Utente"));
 long importo=Long.parseLong(request.getParameter("importo"));
-String date=request.getParameter("data");
+String data=request.getParameter("data");
 
 DipendenteBean d= (DipendenteBean) s.getUtenteById(id);
 
 BustaPaga b= new BustaPaga();
 
-b.setDate(date);
+b.setData(data);
 b.setDipendente(d);
 b.setImporto(importo);
 
-if(b.isValid())
-{
 	s.salvaBustaPaga(b);
 	response.sendRedirect("../HomePage/HomePageAdmin.jsp");	
-}
-else{
-	message.setMessage("Dati non corretti");
-	response.sendRedirect("BustaPaga.jsp");	
-}
+
 
 
 %>

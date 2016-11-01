@@ -23,11 +23,9 @@
     	password=s.convertiPass(password);
     	cbean.setPassword(password);
         s.registraCliente(cbean);
-        s.registraRubrica(username);
-        message.setMessage("Cliente registrato!");
-        
+        s.registraRubrica(username);        
         %>
-    	<jsp:forward page="../HomePage/HomePageAdmin.jsp"/>
+    	<jsp:forward page="ElencoClienti.jsp"/>
     <%
     }
     else{

@@ -71,10 +71,10 @@ if(admin.isValid()){
 						<td class="center" ><c:out value="${u.username}" /></td>
 						<td class="center" ><c:out value="${u.ragioneSociale}" /></td>
 						<td class="center" ><c:out value="${u.pIVA}" /></td>
-						<td class="center" > <a id="edit" class="btn btn-info">
+						<td class="center" ><button id="edit" class="btn btn-info">
                 							<i class="glyphicon glyphicon-edit icon-white"></i>
                 							Edit
-            								</a>
+            								</button>
             								<form id="delete" method="get">
             								<input type="hidden" value="${u.id_Utente}" name="id_Utente"/>
             								<button type="submit" class="btn btn-danger" onclick="conferma()">Delete

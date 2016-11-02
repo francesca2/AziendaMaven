@@ -5,21 +5,23 @@ jQuery(document).ready(function() {
 
     $('#edit').click(function()
 			{
-                var currentTD = $(this).parents('tr').find('td');
-            if ($(this).html() == 'Edit') {                  
-              $.each(currentTD, function () {
-                  $(this).prop('contenteditable', true)
-              });
-          } else {
-             $.each(currentTD, function () {
-                             
-                  $(this).prop('contenteditable', false)
-              });
+    	 var currentTD = $(this).parents('tr').find('td');
+         var count=currentTD.length-1;
+      if ($(this).html() == 'Edit') {                  
+          for(i=0; i<count; i++){
+        	  var s=currentTD[i].innerHTML;
+              currentTD[i].innerHTML='<input type="text" value="'+s+'"/>';
           }
-
-          $(this).html($(this).html() == 'Edit' ? 'Save' : 'Edit')
           
-			})
+      } else {
+         $.each(currentTD, function () {
+              $(this).prop('contenteditable', false)
+          });
+      }
+
+      $(this).html($(this).html() == 'Edit' ? 'Save' : 'Edit')
+
+});
 
 });
 

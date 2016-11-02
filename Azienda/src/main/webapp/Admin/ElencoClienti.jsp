@@ -64,8 +64,8 @@ if(admin.isValid()){
 				%>
 
 				<c:forEach items="${lista}" var="u">
-
 					<tr>
+
 						<td class="center" ><c:out value="${u.nome}" /></td>
 						<td class="center" ><c:out value="${u.cognome}" /></td>
 						<td class="center" ><c:out value="${u.username}" /></td>
@@ -75,6 +75,7 @@ if(admin.isValid()){
                 							<i class="glyphicon glyphicon-edit icon-white"></i>
                 							Edit
             								</button>
+ 
             								<form id="delete" method="get">
             								<input type="hidden" value="${u.id_Utente}" name="id_Utente"/>
             								<button type="submit" class="btn btn-danger" onclick="conferma()">Delete
@@ -83,6 +84,7 @@ if(admin.isValid()){
             								</form>
         				</td>
 					</tr>
+					      
 				</c:forEach>
 
     		</tbody>

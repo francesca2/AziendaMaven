@@ -72,16 +72,18 @@ if(admin.isValid()){
 										<td class="center"><c:out value="${u.username}" /></td>
 										<td class="center"><c:out value="${u.posizione}" /></td>
 										<td class="center"><c:out value="${u.stipendio}" /></td>
-										<td class="center"><a class="btn btn-info" href="#">
-												<i class="glyphicon glyphicon-edit icon-white"></i> Edit
-										</a>
-											<form method="get">
+										<td class="center">
+											<form id="form" method="get">
 												<input type="hidden" value="${u.id_Utente}" name="id_Utente" />
+												<button id="editDipendente" type="button" class="btn btn-info">
+													<i class="glyphicon glyphicon-edit icon-white"></i> Edit
+												</button>
 												<button type="submit" class="btn btn-danger"
 													onclick="conferma()">
-													Delete <i class="glyphicon glyphicon-trash icon-white"></i>
+													<i class="glyphicon glyphicon-trash icon-white"></i> Delete
 												</button>
-											</form></td>
+											</form>
+										</td>
 									</tr>
 								</c:forEach>
 

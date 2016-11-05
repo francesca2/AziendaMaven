@@ -3,24 +3,30 @@
  */
 jQuery(document).ready(function() {
 
-    $('#edit').click(function()
+    $('#editCliente').click(function()
 			{
     	 var currentTD = $(this).parents('tr').find('td');
          var count=currentTD.length-1;
-      if ($(this).html() == 'Edit') {                  
           for(i=0; i<count; i++){
         	  var s=currentTD[i].innerHTML;
-              currentTD[i].innerHTML='<input type="text" value="'+s+'"/>';
+        	  var nome="nome"+i;
+              currentTD[i].innerHTML='<input type="text" value="'+s+'" name="'+nome+'" form="form""ì"/>';
           }
-          
-      } else {
-         $.each(currentTD, function () {
-              $(this).prop('contenteditable', false)
-          });
-      }
 
-      $(this).html($(this).html() == 'Edit' ? 'Save' : 'Edit')
+         $(this).replaceWith('<button type="submit" class="btn btn-info" onclick="salvaCliente()"><i class="glyphicon glyphicon-check"></i> Save</button>');
+});
+    
+    $('#editDipendente').click(function()
+			{
+    	 var currentTD = $(this).parents('tr').find('td');
+         var count=currentTD.length-1;
+          for(i=0; i<count; i++){
+        	  var s=currentTD[i].innerHTML;
+        	  var nome="nome"+i;
+              currentTD[i].innerHTML='<input type="text" value="'+s+'" name="'+nome+'" form="form""ì"/>';
+          }
 
+         $(this).replaceWith('<button type="submit" class="btn btn-info" onclick="salvaDipendente()"><i class="glyphicon glyphicon-check"></i> Save</button>');
 });
 
 });
@@ -28,7 +34,23 @@ jQuery(document).ready(function() {
 function conferma(){
 	var result=confirm("Sei sicuro di voler eliminare definitivamente questo utente?")
 	if(result==true){
-		document.getElementById("delete").action='doCancellaUtente.jsp';
-		document.getElementById("delete").submit();
+		document.getElementById("form").action='doCancellaUtente.jsp';
+		document.getElementById("form").submit();
+	}
+}
+
+function salvaCliente(){
+	var result=confirm("Sei sicuro di voler salvare le modifiche fatte?")
+	if(result==true){
+		document.getElementById("form").action='doModificaCliente.jsp';
+		document.getElementById("form").submit();
+	}
+}
+
+function salvaDipendente(){
+	var result=confirm("Sei sicuro di voler salvare le modifiche fatte?")
+	if(result==true){
+		document.getElementById("form").action='doModificaDipendente.jsp';
+		document.getElementById("form").submit();
 	}
 }

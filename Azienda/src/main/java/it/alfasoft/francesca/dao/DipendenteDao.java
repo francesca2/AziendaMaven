@@ -62,6 +62,31 @@ public class DipendenteDao {
 		return dbean;
 		
 	}
+	
+	public DipendenteBean trovaDipendenteConId(long id) {
+		
+		DipendenteBean dbean=null;
+		Session session =HibernateUtil.openSession();
+		Transaction tx=null;
+
+		try{
+		tx=session.getTransaction();
+		tx.begin();
+		
+		Query query=session.createQuery("from DipendenteBean where id_Utente=:x1");
+		query.setLong("x1", id);
+		
+		dbean=(DipendenteBean) query.uniqueResult();
+
+		 tx.commit();
+		}catch(Exception ex){
+			tx.rollback();
+		}finally{
+			session.close();
+		}
+		return dbean;
+		
+	}
 
 	
 	public List<DipendenteBean> getTuttiDipendenti() {
@@ -83,6 +108,30 @@ public class DipendenteDao {
 			session.close();
 		}
 		return dipendenti;
+	}
+	
+	public boolean aggiornaDipendente(DipendenteBean d) {
+		
+		boolean result=false;
+		Session session =HibernateUtil.openSession();
+		Transaction tx=null;
+
+		try{
+		tx=session.getTransaction();
+		tx.begin();
+		
+		session.update(d);
+		result=true;
+
+		 tx.commit();
+		}catch(Exception ex){
+			tx.rollback();
+		}finally{
+			session.close();
+		}
+		
+		return result;
+		
 	}
 	
 }

@@ -62,6 +62,31 @@ public class ClienteDao {
 		
 	}
 
+	public ClienteBean trovaClienteConId(long id) {
+		
+		ClienteBean cbean=null;
+		Session session =HibernateUtil.openSession();
+		Transaction tx=null;
+
+		try{
+		tx=session.getTransaction();
+		tx.begin();
+		
+		Query query=session.createQuery("from ClienteBean where id_Utente=:x1");
+		query.setLong("x1", id);
+		
+		cbean=(ClienteBean) query.uniqueResult();
+
+		 tx.commit();
+		}catch(Exception ex){
+			tx.rollback();
+		}finally{
+			session.close();
+		}
+		return cbean;
+		
+	}
+	
 	public List<ClienteBean> getTuttiClienti() {
 		List<ClienteBean> clienti= new ArrayList<ClienteBean>();
 		Session session =HibernateUtil.openSession();
@@ -83,6 +108,28 @@ public class ClienteDao {
 		return clienti;
 	}
 	
-	
+	public boolean aggiornaCliente(ClienteBean c) {
+		
+		boolean result=false;
+		Session session =HibernateUtil.openSession();
+		Transaction tx=null;
+
+		try{
+		tx=session.getTransaction();
+		tx.begin();
+		
+		session.update(c);
+		result=true;
+
+		 tx.commit();
+		}catch(Exception ex){
+			tx.rollback();
+		}finally{
+			session.close();
+		}
+		
+		return result;
+		
+	}
 	
 }

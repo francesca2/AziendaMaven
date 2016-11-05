@@ -49,6 +49,14 @@ public class Servizi {
 
 		return result;
 	}
+	//metodi per modificare i dati degli utenti
+	public boolean saveCliente(ClienteBean c){
+		return cdao.aggiornaCliente(c);
+	}
+	
+	public boolean saveDipendente(DipendenteBean d){
+		return ddao.aggiornaDipendente(d);
+	}
 
 	//metodo per avere la lista dei clienti
 	public List<ClienteBean> getClienti(){
@@ -103,6 +111,16 @@ public class Servizi {
 	public UtenteBean getUtenteById(long id) {
 		UtenteBean u =udao.trovaUtenteConId(id);
 		return u;
+	}
+	
+	public ClienteBean getClienteById(long id) {
+		ClienteBean c =cdao.trovaClienteConId(id);
+		return c;
+	}
+	
+	public DipendenteBean getDipendenteById(long id) {
+		DipendenteBean d =ddao.trovaDipendenteConId(id);
+		return d;
 	}
 	
 	

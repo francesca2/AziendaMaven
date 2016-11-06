@@ -15,6 +15,8 @@
                         </li>
                         <li><a class="ajax-link" href="../Rubrica/ElencoContattiCliente.jsp"><i class="glyphicon glyphicon-list"></i><span> Elenco Contatti</span></a>
                         </li>
+                        <li><a class="ajax-link" href="../Rubrica/TrovaVoceCliente.jsp"><i class="glyphicon glyphicon-search"></i><span> Trova Contatto</span></a>
+                        </li>
                         <li><a href="../doLogout.jsp"><i class="glyphicon glyphicon-lock"></i><span> Login Page</span></a>
                         </li>
                     </ul>

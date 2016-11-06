@@ -10,7 +10,7 @@ jQuery(document).ready(function() {
           for(i=0; i<count; i++){
         	  var s=currentTD[i].innerHTML;
         	  var nome="nome"+i;
-              currentTD[i].innerHTML='<input type="text" value="'+s+'" name="'+nome+'" form="form""ì"/>';
+              currentTD[i].innerHTML='<input type="text" value="'+s+'" name="'+nome+'" form="form"/>';
           }
 
          $(this).replaceWith('<button type="submit" class="btn btn-info" onclick="salvaCliente()"><i class="glyphicon glyphicon-check"></i> Save</button>');
@@ -23,7 +23,7 @@ jQuery(document).ready(function() {
           for(i=0; i<count; i++){
         	  var s=currentTD[i].innerHTML;
         	  var nome="nome"+i;
-              currentTD[i].innerHTML='<input type="text" value="'+s+'" name="'+nome+'" form="form""ì"/>';
+              currentTD[i].innerHTML='<input type="text" value="'+s+'" name="'+nome+'" form="form"/>';
           }
 
          $(this).replaceWith('<button type="submit" class="btn btn-info" onclick="salvaDipendente()"><i class="glyphicon glyphicon-check"></i> Save</button>');

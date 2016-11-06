@@ -1,3 +1,4 @@
+<%@page import="model.Rubrica"%>
 <%@page import="it.alfasoft.francesca.bean.DipendenteBean"%>
 <%@page import="it.alfasoft.francesca.service.Servizi"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
@@ -25,7 +26,10 @@
     		dbean.setUsername(username);
     		dbean.setPosizione(posizione);
     		dbean.setStipendio(stipendio);
-    		s.saveDipendente(dbean);   
+    		s.saveDipendente(dbean);  
+    		Rubrica r= s.trovaRubrica(usnm);
+    		r.setNomeRubrica(username);
+    		s.saveRubrica(r);
         %>
 <jsp:forward page="ElencoDipendenti.jsp" />
 <%

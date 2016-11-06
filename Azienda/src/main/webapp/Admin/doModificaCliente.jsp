@@ -1,3 +1,4 @@
+<%@page import="model.Rubrica"%>
 <%@page import="it.alfasoft.francesca.bean.ClienteBean"%>
 <%@page import="it.alfasoft.francesca.service.Servizi"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
@@ -25,7 +26,10 @@
     		cbean.setUsername(username);
     		cbean.setRagioneSociale(rg);
     		cbean.setpIVA(piva);
-    		s.saveCliente(cbean);   
+    		s.saveCliente(cbean);
+    		Rubrica r= s.trovaRubrica(usnm);
+    		r.setNomeRubrica(username);
+    		s.saveRubrica(r);
         %>
 <jsp:forward page="ElencoClienti.jsp" />
 <%

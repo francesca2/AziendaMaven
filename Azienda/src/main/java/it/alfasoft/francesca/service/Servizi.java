@@ -133,7 +133,7 @@ public class Servizi {
 		else {
 			Rubrica r=rdao.trovaRubricaConNome(u.getUsername());
 			if(r!=null) {
-			rdao.deleteUtente(r);
+			rdao.deleteRubrica(r);
 			}
 			return udao.deleteUtente(u);
 		}
@@ -151,7 +151,7 @@ public class Servizi {
 		else {
 			Rubrica r=rdao.trovaRubricaConNome(u.getUsername());
 			if(r!=null) {
-			rdao.deleteUtente(r);
+			rdao.deleteRubrica(r);
 			}
 			return udao.deleteUtente(u);
 		}
@@ -189,6 +189,10 @@ public class Servizi {
 
 		return r;
 	}
+	//metodo per trovare una voce
+	public Voce getVoceById(long id){
+		return vdao.trovaVoceConId(id);
+	}
 
 	//metodo per prendere tutte le voci di rubrica
 	public List<Voce> getVoci(Rubrica r) {
@@ -204,6 +208,15 @@ public class Servizi {
 		Voce v=vdao.trovaVoceConId(id);
 		boolean result=vdao.eliminaVoce(v);
 		return result;
+	}
+	//metodo per aggiornare la rubrica
+	public boolean saveRubrica(Rubrica r){
+		return rdao.aggiornaRubrica(r);
+	}
+	
+	//metodo per aggiornare una voce
+	public boolean saveVoce(Voce v){
+		return vdao.aggiornaVoce(v);
 	}
 
 	//metodo per creare una busta paga

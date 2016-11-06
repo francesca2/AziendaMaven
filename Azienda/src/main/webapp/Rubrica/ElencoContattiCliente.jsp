@@ -14,6 +14,10 @@
 <jsp:useBean id="cliente" class="it.alfasoft.francesca.bean.ClienteBean"
 	scope="session"></jsp:useBean>
 
+<script type="text/javascript"
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script type="text/javascript" src="Modifiche.js"></script>
+
  		 <% 
 if(cliente.isValid()){
 %>  
@@ -54,10 +58,10 @@ if(cliente.isValid()){
 				<thead>
 
 					<tr>
-						<th>n.</th>
-						<th>nome</th>
-						<th>cognome</th>
-						<th>telefono</th>
+						<th>Nome</th>
+						<th>Cognome</th>
+						<th>Telefono</th>
+						<th>Actions</th>
 					</tr>
 
 				</thead>
@@ -76,16 +80,20 @@ if(cliente.isValid()){
 						<td class="center"><c:out value="${u.nomeVoce}" /></td>
 						<td class="center"><c:out value="${u.cognomeVoce}" /></td>
 						<td class="center"><c:out value="${u.telefono}" /></td>
-						<td class="center"> <a class="btn btn-info" href="#">
-                							<i class="glyphicon glyphicon-edit icon-white"></i>
-                							Edit
-            								</a>
-            								<form action="doEliminaContattoCliente.jsp" method="get">
-            								<input type="hidden" value="${u.id_Voce}" name="id_Voce"/>
-            								<button type="submit" class="btn btn-danger">Delete
-            								<i class="glyphicon glyphicon-trash icon-white"></i>
-            								</button>
-            								</form>
+						<td class="center">											
+											<form id="form" method="get">
+											<input type="hidden"
+												value="${cliente.id_Utente}" name="id_Utente" />
+											<input type="hidden"
+												value="${u.id_Voce}" name="id_Voce" />
+												<button id="editVoce" type="button" class="btn btn-info">
+													<i class="glyphicon glyphicon-edit icon-white"></i> Edit
+												</button>
+												<button type="submit" class="btn btn-danger"
+													onclick="conferma()">
+													<i class="glyphicon glyphicon-trash icon-white"></i> Delete
+												</button>
+																				</form>
         				</td>
 					</tr>
 				</c:forEach>

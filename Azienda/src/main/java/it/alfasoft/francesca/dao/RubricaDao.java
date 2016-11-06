@@ -146,7 +146,7 @@ public class RubricaDao {
 	}
 	
 	//Elimina Rubrica
-	public boolean deleteUtente(Rubrica r)
+	public boolean deleteRubrica(Rubrica r)
 	{
 		boolean result=false;
 		Session session =HibernateUtil.openSession();

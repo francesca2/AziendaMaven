@@ -42,7 +42,7 @@ public class VoceServlet extends HttpServlet {
 		Voce voce=this.getVoce(nome,cognome,id);
 		
 		
-		JsonElement sudenteJson= gson.toJsonTree(voce);
+		JsonElement voceJson= gson.toJsonTree(voce);
 		
 		if(voce== null){
 			jobj.addProperty("success",false);
@@ -51,7 +51,7 @@ public class VoceServlet extends HttpServlet {
 			jobj.addProperty("success",true);
 		}
 		
-		jobj.add("studente", sudenteJson);
+		jobj.add("voce", voceJson);
 		
 		out.println(jobj.toString());
 		

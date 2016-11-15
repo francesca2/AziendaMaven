@@ -8,9 +8,9 @@ uri="http://java.sun.com/jsp/jstl/core" %>
 <jsp:useBean id="cliente" class="it.alfasoft.francesca.bean.ClienteBean"
 	scope="session"></jsp:useBean>
     
-      <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.js" type="text/javascript"></script>
-    <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/jquery-ui.min.js" type="text/javascript"></script>
-    <script type="text/javascript" src="TrovaVoceAjax.js" ></script>
+    <script type="text/javascript"
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>>
+    <script type="text/javascript" src="trovaVoceAjax.js" ></script>
     
  		 <% 
 if(cliente.isValid()){
@@ -57,7 +57,7 @@ if(cliente.isValid()){
                         <input id="cognome" type="text" name="cognome" class="form-control" placeholder="Cognome">
                     </div>   
                         <input id="id" type="hidden" value="${cliente.id_Utente}" name="id_Utente" />         
-                    <button id="btn" type="button" class="btn btn-default">Trova</button>
+                    <button id="trova" type="button" class="btn btn-default">Trova</button>
                 </form>
                 
    <div id="risposta"></div>

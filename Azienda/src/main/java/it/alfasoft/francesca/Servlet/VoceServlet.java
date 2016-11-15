@@ -1,7 +1,5 @@
 package it.alfasoft.francesca.Servlet;
 
-import it.alfasoft.francesca.dao.VoceDao;
-
 import java.io.IOException;
 import java.io.PrintWriter;
 
@@ -11,11 +9,17 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import model.Rubrica;
 import model.Voce;
 
 import com.google.gson.Gson;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
+
+import it.alfasoft.francesca.bean.UtenteBean;
+import it.alfasoft.francesca.dao.VoceDao;
+import it.alfasoft.francesca.service.Servizi;
+
 
 /**
  * Servlet implementation class VoceServlet
@@ -29,8 +33,8 @@ public class VoceServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		String nome=request.getParameter("nome");
-		String cognome=request.getParameter("cognome");
+		String nome=request.getParameter("nme");
+		String cognome=request.getParameter("cgnm");
 		long id=Long.parseLong(request.getParameter("id"));
 	
 		PrintWriter out=response.getWriter();
@@ -40,8 +44,7 @@ public class VoceServlet extends HttpServlet {
 		JsonObject jobj= new JsonObject();
 		
 		Voce voce=this.getVoce(nome,cognome,id);
-		
-		
+
 		JsonElement voceJson= gson.toJsonTree(voce);
 		
 		if(voce== null){
@@ -61,10 +64,13 @@ public class VoceServlet extends HttpServlet {
 		out.close();
 	}
 	
-	public Voce getVoce(String nome,String cognome, long id){
-		VoceDao vDao=new VoceDao();
+	public Voce getVoce(String nome,String cognome,long id){
+		Servizi s=new Servizi();
 		
-		return vDao.trovaVoce(nome, cognome, id);
+		UtenteBean u=s.getUtenteById(id);
+		Rubrica r=s.trovaRubrica(u.getUsername());
+		VoceDao vDao=new VoceDao();
+		return vDao.trovaVoce(nome, cognome, r.getId_Rubrica());
 		
 	}
 

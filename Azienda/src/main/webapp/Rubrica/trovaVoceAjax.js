@@ -3,25 +3,21 @@
  */
 jQuery(document).ready(function() {
 	
-	
-	$("#btn").click(function(){
-		
+	$("#trova").click(function(){
 
 	  var nome=$("#nome").val();
 	  var cognome=$("#cognome").val();
 	  var id=$("#id").val();
 	  
 	  // parametri dentro url => http:// ...  ?matricola=valore 
-//	  var parametroInput1="nme="+nome;
-//	  var parametroInput2="cgnm="+cognome;
-	  
+	  var parametroInput="nme="+nome + "&cgnm="+cognome+"&id="+id;
 	  
 	  $.ajax({
 		  
 		  type: "POST", 
 		  url : "trovaVoce",
-		  data: {nome: nome, cognome: cognome, id: id}, //
-		  dataType : "JSON" ,
+		  data: parametroInput, //
+		  dataType : "json" ,
 		  
 		  
 		  success: function(data,txtStatus,jqXHR){
@@ -34,7 +30,7 @@ jQuery(document).ready(function() {
 			  }else{
 				  $("#risposta").html("");
 				  $("#risposta").append("<p> La voce non esiste </p>");
-				  
+				  alert(parametroInput);
 			  }
 			  
 			  
@@ -52,10 +48,6 @@ jQuery(document).ready(function() {
 		  
 		  
 	  });
-	  
-	  
-	//  alert(dataInserito);
-		
 		
 	});
 		
